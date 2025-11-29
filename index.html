@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Warrior Saint: Guru Gobind Singh Ji - MCQ Quiz</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
+        min-height: 100vh;
+        color: #e8e8e8;
+        line-height: 1.7;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+        border-radius: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 40px rgba(233, 69, 96, 0.3);
+      }
+      header h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+      }
+      header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+      }
+      .khanda-symbol {
+        font-size: 4rem;
+        margin-bottom: 15px;
+      }
+      .student-info {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+      }
+      .student-info h2 {
+        color: #ff6b6b;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ffd93d;
+        font-weight: 500;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 1rem;
+      }
+      .form-group input:focus {
+        outline: none;
+        border-color: #e94560;
+      }
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .instructions {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 217, 61, 0.1) 0%,
+          rgba(255, 107, 107, 0.1) 100%
+        );
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        border-left: 4px solid #ffd93d;
+      }
+      .instructions h3 {
+        color: #ffd93d;
+        margin-bottom: 15px;
+      }
+      .instructions ul {
+        margin-left: 20px;
+      }
+      .instructions li {
+        margin-bottom: 8px;
+      }
+      .pass-indicator {
+        display: inline-block;
+        background: #4ecca3;
+        color: #1a1a2e;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+      }
+      .question-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+      .question-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+      .question-card.answered {
+        border-color: #4ecca3;
+      }
+      .question-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      .question-number {
+        background: linear-gradient(135deg, #e94560, #ff6b6b);
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .question-text {
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .option {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .option:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      .option.selected {
+        background: rgba(233, 69, 96, 0.2);
+        border-color: #e94560;
+      }
+      .option input {
+        display: none;
+      }
+      .option-letter {
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #ffd93d;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+      .option.selected .option-letter {
+        background: #e94560;
+        color: #fff;
+      }
+      .option-text {
+        color: #e8e8e8;
+        font-size: 1rem;
+      }
+      .submit-section {
+        text-align: center;
+        padding: 30px;
+      }
+      .submit-btn {
+        background: linear-gradient(135deg, #e94560, #ff6b6b);
+        color: #fff;
+        border: none;
+        padding: 18px 60px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+      }
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(233, 69, 96, 0.5);
+      }
+      .progress-tracker {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(26, 26, 46, 0.95);
+        padding: 15px 25px;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 100;
+      }
+      .progress-tracker span {
+        color: #ffd93d;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 4px;
+        background: linear-gradient(90deg, #e94560, #ffd93d);
+        z-index: 101;
+        transition: width 0.3s ease;
+      }
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .modal {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 25px;
+        padding: 50px;
+        max-width: 650px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .result-icon {
+        font-size: 6rem;
+        margin-bottom: 20px;
+      }
+      .result-pass .result-icon {
+        color: #4ecca3;
+      }
+      .result-fail .result-icon {
+        color: #e94560;
+      }
+      .result-title {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+      .result-subtitle {
+        font-size: 1.1rem;
+        color: #aaa;
+        margin-bottom: 30px;
+      }
+      .score-display {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+      }
+      .score-circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid;
+      }
+      .result-pass .score-circle {
+        border-color: #4ecca3;
+        background: rgba(78, 204, 163, 0.1);
+      }
+      .result-fail .score-circle {
+        border-color: #e94560;
+        background: rgba(233, 69, 96, 0.1);
+      }
+      .score-number {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .result-pass .score-number {
+        color: #4ecca3;
+      }
+      .result-fail .score-number {
+        color: #e94560;
+      }
+      .score-label {
+        font-size: 0.9rem;
+        color: #aaa;
+      }
+      .result-details {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 25px 0;
+        text-align: left;
+      }
+      .result-details p {
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+      }
+      .result-details p:last-child {
+        border-bottom: none;
+      }
+      .result-details strong {
+        color: #ffd93d;
+      }
+      .result-message {
+        font-size: 1.2rem;
+        margin: 25px 0;
+        padding: 20px;
+        border-radius: 15px;
+        font-weight: 500;
+      }
+      .pass-message {
+        background: rgba(78, 204, 163, 0.2);
+        color: #4ecca3;
+        border: 1px solid rgba(78, 204, 163, 0.3);
+      }
+      .fail-message {
+        background: rgba(233, 69, 96, 0.2);
+        color: #ff6b6b;
+        border: 1px solid rgba(233, 69, 96, 0.3);
+      }
+      .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+      .print-btn,
+      .close-btn,
+      .retry-btn {
+        padding: 14px 35px;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
+      .print-btn {
+        background: linear-gradient(135deg, #4ecca3, #3db892);
+        color: #1a1a2e;
+        border: none;
+      }
+      .retry-btn {
+        background: linear-gradient(135deg, #ffd93d, #ffcd1d);
+        color: #1a1a2e;
+        border: none;
+      }
+      .close-btn {
+        background: transparent;
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+      .print-btn:hover,
+      .retry-btn:hover {
+        transform: translateY(-2px);
+      }
+      .close-btn:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .certificate {
+        display: none;
+        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        color: #1a1a2e;
+        padding: 60px;
+        text-align: center;
+        border: 15px double #e94560;
+      }
+      .certificate h2 {
+        color: #e94560;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+      }
+      .certificate h3 {
+        color: #16213e;
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        font-weight: normal;
+      }
+      .certificate .cert-text {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 15px;
+      }
+      .certificate .student-name-cert {
+        font-size: 2.5rem;
+        color: #16213e;
+        font-weight: bold;
+        margin: 25px 0;
+      }
+      .certificate .cert-score {
+        font-size: 1.5rem;
+        color: #4ecca3;
+        margin: 25px 0;
+        font-weight: bold;
+      }
+      .certificate .cert-date {
+        margin-top: 40px;
+        color: #888;
+        font-size: 1rem;
+      }
+      .certificate .cert-quote {
+        margin-top: 30px;
+        font-style: italic;
+        color: #666;
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+      }
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 1.8rem;
+        }
+        .progress-tracker {
+          top: auto;
+          bottom: 20px;
+          right: 20px;
+          left: 20px;
+          text-align: center;
+        }
+        .modal {
+          padding: 30px 20px;
+        }
+        .score-circle {
+          width: 120px;
+          height: 120px;
+        }
+        .score-number {
+          font-size: 2.5rem;
+        }
+      }
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        .certificate,
+        .certificate * {
+          visibility: visible;
+        }
+        .certificate {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          display: block !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-tracker">
+      <span id="progressText">0 / 20 answered</span>
+    </div>
+    <div class="container">
+      <header>
+        <div class="khanda-symbol">☬</div>
+        <h1>The Warrior Saint</h1>
+        <p>
+          Comprehensive Quiz on the Life of Guru Gobind Singh Ji (1666-1708)
+        </p>
+      </header>
+      <form id="quizForm">
+        <div class="student-info">
+          <h2>📝 Student Information</h2>
+          <div class="form-group">
+            <label for="studentName">Full Name *</label>
+            <input
+              type="text"
+              id="studentName"
+              name="studentName"
+              required
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="studentEmail">Email Address *</label>
+            <input
+              type="email"
+              id="studentEmail"
+              name="studentEmail"
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+        </div>
+        <div class="instructions">
+          <h3>📋 Instructions</h3>
+          <ul>
+            <li>
+              This quiz contains <strong>20 multiple-choice questions</strong>.
+            </li>
+            <li>
+              Each question is worth <strong>5 points</strong> (Total: 100
+              points).
+            </li>
+            <li>
+              <span class="pass-indicator">Pass Mark: 75%</span> (15 correct
+              answers required)
+            </li>
+            <li>Select the best answer for each question.</li>
+          </ul>
+        </div>
+        <div id="questionsContainer"></div>
+        <div class="submit-section">
+          <button type="submit" class="submit-btn">Submit Quiz</button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-overlay" id="resultsModal">
+      <div class="modal"><div id="resultContent"></div></div>
+    </div>
+    <div class="certificate" id="certificate">
+      <h2>CERTIFICATE OF ACHIEVEMENT</h2>
+      <h3>The Warrior Saint: Guru Gobind Singh Ji</h3>
+      <p class="cert-text">This is to certify that</p>
+      <p class="student-name-cert" id="certName"></p>
+      <p class="cert-text">has demonstrated comprehensive knowledge of</p>
+      <p style="font-size: 1.3rem; color: #16213e; font-weight: bold">
+        Sri Guru Gobind Singh Ji Maharaj (1666-1708)
+      </p>
+      <p class="cert-score">Score: <span id="certScore"></span>%</p>
+      <p style="color: #4ecca3; font-weight: bold; font-size: 1.2rem">
+        ✓ PASSED
+      </p>
+      <p class="cert-date">Date: <span id="certDate"></span></p>
+      <p class="cert-quote">
+        "When all other means have failed, it is righteous to draw the
+        sword."<br />— Guru Gobind Singh Ji
+      </p>
+    </div>
+    <script>
+              const questions = [
+                  { id: 1, question: "Where was Guru Gobind Singh Ji born?", options: ["Anandpur Sahib, Punjab", "Patna Sahib, Bihar", "Amritsar, Punjab", "Nanded, Maharashtra"], correct: 1 },
+                  { id: 2, question: "At what age did Guru Gobind Singh Ji become the tenth Guru?", options: ["5 years old", "7 years old", "9 years old", "12 years old"], correct: 2 },
+                  { id: 3, question: "Why did Kashmiri Pandits approach Guru Tegh Bahadur Ji?", options: ["Financial assistance for temples", "Forced conversion to Islam under Aurangzeb", "Military protection from Mughals", "Permission to settle in Punjab"], correct: 1 },
+                  { id: 4, question: "On which date was the Khalsa established?", options: ["January 1, 1700", "Vaisakhi (April 13), 1699", "Diwali, 1698", "Hola Mohalla, 1700"], correct: 1 },
+                  { id: 5, question: "How many volunteers became the Panj Pyare at Vaisakhi 1699?", options: ["Three", "Five", "Seven", "Ten"], correct: 1 },
+                  { id: 6, question: "What was revolutionary about the Panj Pyare's backgrounds?", options: ["All from Punjab", "All from warrior castes", "Five different castes and regions of India", "All Persian scholars"], correct: 2 },
+                  { id: 7, question: "What did Mata Sahib Kaur add to the Amrit?", options: ["Rose petals", "Honey", "Patashas (sugar puffs)", "Saffron"], correct: 2 },
+                  { id: 8, question: "Which is NOT one of the Five Ks?", options: ["Kesh (uncut hair)", "Kara (steel bracelet)", "Khanda (double-edged sword)", "Kirpan (sword)"], correct: 2 },
+                  { id: 9, question: "What surname did Guru Ji ordain for Khalsa females?", options: ["Singh", "Kaur", "Devi", "Kumari"], correct: 1 },
+                  { id: 10, question: "How many people took Amrit within days of the first ceremony?", options: ["5,000", "20,000", "80,000", "100,000"], correct: 2 },
+      { id: 11, question: "How long did the Second Siege of Anandpur last?", options: ["Three months", "Five months", "Eight months", "One year"], correct: 2 },
+      { id: 12, question: "What was the Sikh to enemy ratio at Anandpur siege?", options: ["1:5", "1:10", "1:15-20", "1:3"], correct: 2 },
+      { id: 13, question: "What did enemies swear on for safe passage from Anandpur?", options: ["Guru Granth Sahib", "Quran and Cow", "Family honor", "Emperor's name"], correct: 1 },
+      { id: 14, question: "Ages of Sahibzada Zorawar Singh and Fateh Singh at martyrdom?", options: ["12 and 10", "9 and 6", "11 and 8", "7 and 5"], correct: 1 },
+      { id: 15, question: "How were the younger Sahibzadas executed?", options: ["Beheaded", "Bricked up alive in a wall", "Poisoned", "Died in battle"], correct: 1 },
+      { id: 16, question: "Who purchased cremation land with gold coins?", options: ["Bhai Mani Singh", "Banda Singh Bahadur", "Seth Todar Mal", "Nawab Wazir Khan"], correct: 2 },
+      { id: 17, question: "What is the Zafarnama?", options: ["Poetry compilation", "Letter of victory to Aurangzeb in Persian", "Autobiography in Dasam Granth", "Military document"], correct: 1 },
+      { id: 18, question: "How many battles did Guru Gobind Singh Ji fight?", options: ["14", "18", "22", "30"], correct: 2 },
+      { id: 19, question: "What did Guru Ji declare before death in 1708?", options: ["His son as next Guru", "Guru Granth Sahib as eternal Guru & Khalsa Panth as temporal authority", "Return to Hindu practices", "Banda Singh as 11th Guru"], correct: 1 },
+      { id: 20, question: "Where did Guru Gobind Singh Ji leave his mortal body?", options: ["Anandpur Sahib", "Patna Sahib", "Hazur Sahib, Nanded", "Golden Temple, Amritsar"], correct: 2 }
+      ];
+      let answeredCount = 0;
+      const answered = new Set();
+      function generateQuestions() {
+        const container = document.getElementById('questionsContainer');
+        container.innerHTML = questions.map(q => `
+          <div class="question-card" id="qcard${q.id}">
+            <div class="question-header">
+              <span class="question-number">${q.id}</span>
+              <span class="question-text">${q.question}</span>
+            </div>
+            <div class="options">
+              ${q.options.map((opt, i) => `
+                <label class="option" id="opt${q.id}_${i}">
+                  <input type="radio" name="q${q.id}" value="${i}" onchange="handleAnswer(${q.id})">
+                  <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+                  <span class="option-text">${opt}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+      }
+      function handleAnswer(qId) {
+        const card = document.getElementById(`qcard${qId}`);
+        if (!answered.has(qId)) { answered.add(qId); answeredCount++; }
+        card.classList.add('answered');
+        card.querySelectorAll('.option').forEach(opt => {
+          opt.classList.toggle('selected', opt.querySelector('input').checked);
+        });
+        document.getElementById('progressBar').style.width = (answeredCount / questions.length * 100) + '%';
+        document.getElementById('progressText').textContent = `${answeredCount} / ${questions.length} answered`;
+      }
+      document.getElementById('quizForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('studentName').value.trim();
+        const email = document.getElementById('studentEmail').value.trim();
+        if (!name || !email) { alert('Please enter your name and email.'); return; }
+        let correct = 0;
+        questions.forEach(q => {
+          const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+          if (sel && parseInt(sel.value) === q.correct) correct++;
+        });
+        const pct = Math.round((correct / questions.length) * 100);
+        const passed = pct >= 75;
+        document.getElementById('resultContent').innerHTML = `
+          <div class="${passed ? 'result-pass' : 'result-fail'}">
+            <div class="result-icon">${passed ? '🏆' : '📚'}</div>
+            <h2 class="result-title">${passed ? 'Waheguru Ji Ka Khalsa!' : 'Keep Learning!'}</h2>
+            <p class="result-subtitle">${passed ? 'Waheguru Ji Ki Fateh!' : 'Review and try again'}</p>
+            <div class="score-display">
+              <div class="score-circle">
+                <span class="score-number">${pct}%</span>
+                <span class="score-label">Score</span>
+              </div>
+            </div>
+            <div class="result-details">
+              <p><span>Student</span><strong>${name}</strong></p>
+              <p><span>Email</span><strong>${email}</strong></p>
+              <p><span>Correct</span><strong>${correct} / 20</strong></p>
+              <p><span>Pass Threshold</span><strong>75%</strong></p>
+              <p><span>Date</span><strong>${new Date().toLocaleDateString('en-US', {weekday:'long',year:'numeric',month:'long',day:'numeric'})}</strong></p>
+            </div>
+            <div class="result-message ${passed ? 'pass-message' : 'fail-message'}">
+              ${passed ? '✅ Congratulations! You have PASSED!' : '❌ Score below 75%. Please review and try again.'}
+            </div>
+            <div class="btn-group">
+              ${passed ? `<button class="print-btn" onclick="printCert('${name.replace(/'/g, "\\'")}', ${pct})">🎓 Print Certificate</button>` : ''}
+              <button class="retry-btn" onclick="location.reload()">🔄 Try Again</button>
+              <button class="close-btn" onclick="document.getElementById('resultsModal').style.display='none'">Close</button>
+            </div>
+          </div>
+        `;
+        document.getElementById('resultsModal').style.display = 'flex';
+      });
+      function printCert(name, score) {
+        document.getElementById('certName').textContent = name;
+        document.getElementById('certScore').textContent = score;
+        document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
+        window.print();
+      }
+      document.getElementById('resultsModal').addEventListener('click', function(e) {
+        if (e.target === this) this.style.display = 'none';
+      });
+      generateQuestions();
+    </script>
+  </body>
+</html>
